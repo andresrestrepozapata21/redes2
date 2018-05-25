@@ -7,6 +7,8 @@ $(document).ready(function() {
 	$("#login").click( login );
 	$("#enviar-msj").click( enviarChat );
 	$("#mensaje").keydown( estaEscribiendo );
+	$("#mensaje").keydown( conectados );
+
 });
 
 function login(){
@@ -29,9 +31,8 @@ function conectarSocket(){
 function enviarChat(){
 	if(socket){		
 		var valor = $("#mensaje").val();
-
 		if(valor!=""){
-			socket.emit('sendchat', {username:username, msg:valor} );
+			socket.emit('sendchat', {username:username, msg:valor } );
 			$("#mensaje").val('');
 		}
 	}
@@ -40,7 +41,7 @@ function enviarChat(){
 
 function cargarMensajes(){
 	socket.on('sendchat', function(msg){
-		$("#mensajes").append('<li>'+msg.username+": "+msg.msg+'</li>');
+		$("#mensajes").append('<li>'+ '<b>' + msg.username + '</b>' + ": "+msg.msg +  '</li>');
 	});
 
 	socket.on('disconnect', function(id_user){
@@ -48,7 +49,8 @@ function cargarMensajes(){
 	});
 
 	socket.on('istyping', function(data){
-		$("#escribiendo").html('<span>'+data.username+" está escribiendo..."+'</span>')
+			$("#escribiendo").html('<span>'+data.username+" está escribiendo..."+'</span>' )
+		}
 	});	
 
 	socket.on('isnottyping', function(msg){
@@ -68,8 +70,4 @@ function estaEscribiendo(e){
 
 function terminoEscribir(){
 	socket.emit('isnottyping', username );
-}
-
-function listarUsuarios(){
-	$
 }

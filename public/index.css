@@ -1,0 +1,50 @@
+.title {
+	color: black;
+	-webkit-text-stroke: 1px;
+	text-shadow: -5px -3px 2px #025624;
+	font-size: xx-large;
+	letter-spacing: 5px;
+	text-align: center;
+	font-family: 'Cinzel', serif;
+}
+
+.ingreso {
+	display: inline-block;
+	margin-left: 170px;
+}
+
+#username {
+	margin: 200px auto 30px 10px;
+	border-radius: 5px;
+	height: 25px;
+}
+
+#login {
+	display: inherit;
+	margin: 30px auto;
+	background-color: transparent;
+	border-color: #025624;
+	font-family: 'Roboto Slab', serif;	
+}
+
+h1.title {
+	display: inline-block;
+}
+
+.cont-title {
+	margin-left: 150px;
+}
+
+#mensaje {
+	margin: 200px auto 30px 10px;
+	border-radius: 5px;
+	height: 25px;
+}
+
+#enviar-msj {
+	display: inherit;
+	margin: 30px auto;
+	background-color: transparent;
+	border-color: #025624;
+	font-family: 'Roboto Slab', serif;
+}

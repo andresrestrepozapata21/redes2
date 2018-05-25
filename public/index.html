@@ -1,24 +1,38 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Página principal</title>
+	<title>NodeChat</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=IM+Fell+French+Canon+SC" rel="stylesheet">
 </head>
 <body>
-	<h1>Página web chat</h1>
+	<div class="cont-title">
+		<h1 class="title">NODECHAT</h1>
+		<i class="far fa-comments fa-2x"></i>
+	</div>
 
 	<form id="username-form" >
-		<input type="text" name="username" id="username" placeholder="username" >
+		<div class="ingreso">
+			<i class="fas fa-user-tie" style="color: #025624;"></i>
+			<input type="text" name="username" id="username" placeholder="Digite su username" >
+		</div>
 		<input type="button" name="login" id="login" value="Ingresar">
 	</form>
 
 	<form id="chats-form" style="display: none" >
-		<div id="mensajes" style="padding: 10px" ></div>
-		<input type="text" name="mensaje" id="mensaje">
+		<div id="mensajes" style="padding: 10px; list-style: none; font-family: 'IM Fell French Canon SC', serif;;" ></div>
+		<div class="ingreso">
+			<i class="far fa-comment-alt" style="color: #025624;"></i>
+			<input type="text" name="mensaje" id="mensaje" placeholder="Digite su mensaje">
+		</div>
+		<div>
+			<div class="far fa-comment" id="escribiendo" ></div>
+		</div>
 		<input type="button" name="enviar-msj" id="enviar-msj" value="Enviar Mensaje">
-		<div id="escribiendo" ></div>
 		<div id="listaUsuarios"></div>
 	</form>
 
