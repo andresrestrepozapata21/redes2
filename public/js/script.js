@@ -8,7 +8,6 @@ $(document).ready(function() {
 	$("#login").click( login );
 	$("#enviar-msj").click( enviarChat );
 	$("#mensaje").keydown( estaEscribiendo );
-	$("#mensaje").keydown( conectados );
 
 });
 
@@ -64,7 +63,7 @@ function enviarChat(){
 
 function cargarMensajes(){
 	socket.on('sendchat', function(msg){
-		$("#mensajes").append('<li>'+msg.username+": "+msg.msg+"-----------------Hora:"+msg.total+'</li>');
+		$("#mensajes").append('<li>'+ "<b>" + msg.username+": "+ "</b>" + msg.msg+"......................"+ "<b>"+ "Hora:"+msg.total+"</b>"+'</li>');
 	});
 
 	socket.on('disconnect', function(id_user){
@@ -73,7 +72,6 @@ function cargarMensajes(){
 
 	socket.on('istyping', function(data){
 			$("#escribiendo").html('<span>'+data.username+" está escribiendo..."+'</span>' )
-		}
 	});	
 
 	socket.on('isnottyping', function(msg){
