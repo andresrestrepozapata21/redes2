@@ -1,9 +1,8 @@
 var socket;
 var username;
 var escribiendo;
-var usuarios=[];
 var script,total;
-
+var usuarios=[];
 
 $(document).ready(function() {
 	$("#login").click( login );
@@ -12,18 +11,24 @@ $(document).ready(function() {
 });
 
 function login(){
+	
 	username = $("#username").val() 
-
 	if(username!=""){
-		if(usuarios.lenght==0){
-			usuarios[usuarios.lenght]=username;
+		if(usuarios.length==0){
+			usuarios[usuarios.length]=username;
 			$("#username-form").hide()
 			$("#chats-form").show()
 			conectarSocket();
 			console.log("ingreso con el array en 0");
 		}
 		else{
-			usuarios[usuarios.lenght]=username;
+			usuarios.forEach(function(element) {
+ 				 console.log(element);
+ 				 	if(element==username){
+ 				 		console.log("no se puede ingresar")
+ 				 	}
+			});
+			usuarios[usuarios.length]=username;
 			$("#username-form").hide()
 			$("#chats-form").show()
 			conectarSocket();
@@ -87,8 +92,4 @@ function estaEscribiendo(e){
 
 function terminoEscribir(){
 	socket.emit('isnottyping', username );
-}
-
-function listarUsuarios(){
-	$
 }
