@@ -22,6 +22,8 @@ app.get('/hola', function (req, res) {
 	res.send('¡Hola mundo!');
 });
 
+
+
 io.on('connection', function(socket){	
 	console.log('Usuario conectado');
 	socket.on('sendchat', function(data){

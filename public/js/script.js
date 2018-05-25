@@ -1,6 +1,7 @@
 var socket;
 var username;
 var escribiendo;
+var script,total;
 var usuarios=[];
 
 $(document).ready(function() {
@@ -12,14 +13,29 @@ $(document).ready(function() {
 });
 
 function login(){
-	username = $("#username").val()
-
-	usuarios[usuarios.lenght]=username; 
-
+	
+	username = $("#username").val() 
 	if(username!=""){
-		$("#username-form").hide()
-		$("#chats-form").show()
-		conectarSocket();	
+		if(usuarios.length==0){
+			usuarios[usuarios.length]=username;
+			$("#username-form").hide()
+			$("#chats-form").show()
+			conectarSocket();
+			console.log("ingreso con el array en 0");
+		}
+		else{
+			usuarios.forEach(function(element) {
+ 				 console.log(element);
+ 				 	if(element==username){
+ 				 		console.log("no se puede ingresar")
+ 				 	}
+			});
+			usuarios[usuarios.length]=username;
+			$("#username-form").hide()
+			$("#chats-form").show()
+			conectarSocket();
+			console.log("ingreso y lleno el array ya con datos");
+		}
 	}
 }
 
@@ -30,9 +46,16 @@ function conectarSocket(){
 
 function enviarChat(){
 	if(socket){		
+
 		var valor = $("#mensaje").val();
 		if(valor!=""){
-			socket.emit('sendchat', {username:username, msg:valor } );
+			var fecha = new Date();
+			var hora = fecha.getHours();
+			var minutos = fecha.getMinutes();
+			var segundos = fecha.getSeconds();
+			script= hora+":"+minutos+":"+segundos;
+			total=script;
+			socket.emit('sendchat', {username:username, msg:valor, total:total} );
 			$("#mensaje").val('');
 		}
 	}
@@ -41,7 +64,7 @@ function enviarChat(){
 
 function cargarMensajes(){
 	socket.on('sendchat', function(msg){
-		$("#mensajes").append('<li>'+ '<b>' + msg.username + '</b>' + ": "+msg.msg +  '</li>');
+		$("#mensajes").append('<li>'+msg.username+": "+msg.msg+"-----------------Hora:"+msg.total+'</li>');
 	});
 
 	socket.on('disconnect', function(id_user){
