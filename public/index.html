@@ -1,0 +1,30 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Página principal</title>
+</head>
+<body>
+	<h1>Página web chat</h1>
+
+	<form id="username-form" >
+		<input type="text" name="username" id="username" placeholder="username" >
+		<input type="button" name="login" id="login" value="Ingresar">
+	</form>
+
+	<form id="chats-form" style="display: none" >
+		<div id="mensajes" style="padding: 10px" ></div>
+		<input type="text" name="mensaje" id="mensaje">
+		<input type="button" name="enviar-msj" id="enviar-msj" value="Enviar Mensaje">
+		<div id="escribiendo" ></div>
+		<div id="listaUsuarios"></div>
+	</form>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
+	<script type="text/javascript" src="js/socket.io.js" ></script>
+	<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
+
