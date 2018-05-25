@@ -48,3 +48,7 @@ h1.title {
 	border-color: #025624;
 	font-family: 'Roboto Slab', serif;
 }
+
+#mensajes {
+	margin-left: 130px;
+}
